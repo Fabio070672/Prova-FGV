@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\PROJETOS\\Provas\\Teste.FGV\\br.fgv\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E6D50BB0-E925-8674-F839-BDA9469032A2}|src\\FGV.Infrastructure\\FGV.Infrastructure.csproj|c:\\projetos\\provas\\teste.fgv\\br.fgv\\src\\fgv.infrastructure\\configurations\\books\\bookconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E6D50BB0-E925-8674-F839-BDA9469032A2}|src\\FGV.Infrastructure\\FGV.Infrastructure.csproj|solutionrelative:src\\fgv.infrastructure\\configurations\\books\\bookconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E6D50BB0-E925-8674-F839-BDA9469032A2}|src\\FGV.Infrastructure\\FGV.Infrastructure.csproj|c:\\projetos\\provas\\teste.fgv\\br.fgv\\src\\fgv.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E6D50BB0-E925-8674-F839-BDA9469032A2}|src\\FGV.Infrastructure\\FGV.Infrastructure.csproj|solutionrelative:src\\fgv.infrastructure\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E6D50BB0-E925-8674-F839-BDA9469032A2}|src\\FGV.Infrastructure\\FGV.Infrastructure.csproj|c:\\projetos\\provas\\teste.fgv\\br.fgv\\src\\fgv.infrastructure\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E6D50BB0-E925-8674-F839-BDA9469032A2}|src\\FGV.Infrastructure\\FGV.Infrastructure.csproj|solutionrelative:src\\fgv.infrastructure\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D7384A0A-4787-DD7E-3D7E-C3148E9CF608}|src\\FGV.Application\\FGV.Application.csproj|c:\\projetos\\provas\\teste.fgv\\br.fgv\\src\\fgv.application\\books\\getall\\getallbookshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7384A0A-4787-DD7E-3D7E-C3148E9CF608}|src\\FGV.Application\\FGV.Application.csproj|solutionrelative:src\\fgv.application\\books\\getall\\getallbookshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8019CBEB-24A4-4E65-6436-3F75AE194A2F}|src\\FGV.Api\\FGV.Api.csproj|c:\\projetos\\provas\\teste.fgv\\br.fgv\\src\\fgv.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8019CBEB-24A4-4E65-6436-3F75AE194A2F}|src\\FGV.Api\\FGV.Api.csproj|solutionrelative:src\\fgv.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6D50BB0-E925-8674-F839-BDA9469032A2}|src\\FGV.Infrastructure\\FGV.Infrastructure.csproj|c:\\projetos\\provas\\teste.fgv\\br.fgv\\src\\fgv.infrastructure\\repositories\\bookrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E6D50BB0-E925-8674-F839-BDA9469032A2}|src\\FGV.Infrastructure\\FGV.Infrastructure.csproj|solutionrelative:src\\fgv.infrastructure\\repositories\\bookrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6D50BB0-E925-8674-F839-BDA9469032A2}|src\\FGV.Infrastructure\\FGV.Infrastructure.csproj|c:\\projetos\\provas\\teste.fgv\\br.fgv\\src\\fgv.infrastructure\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E6D50BB0-E925-8674-F839-BDA9469032A2}|src\\FGV.Infrastructure\\FGV.Infrastructure.csproj|solutionrelative:src\\fgv.infrastructure\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,32 +30,32 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "BookConfiguration.cs",
-              "DocumentMoniker": "C:\\PROJETOS\\Provas\\Teste.FGV\\br.fgv\\src\\FGV.Infrastructure\\Configurations\\Books\\BookConfiguration.cs",
-              "RelativeDocumentMoniker": "src\\FGV.Infrastructure\\Configurations\\Books\\BookConfiguration.cs",
-              "ToolTip": "C:\\PROJETOS\\Provas\\Teste.FGV\\br.fgv\\src\\FGV.Infrastructure\\Configurations\\Books\\BookConfiguration.cs",
-              "RelativeToolTip": "src\\FGV.Infrastructure\\Configurations\\Books\\BookConfiguration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAQAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "GetAllBooksHandler.cs",
+              "DocumentMoniker": "C:\\PROJETOS\\Provas\\Teste.FGV\\br.fgv\\src\\FGV.Application\\Books\\GetAll\\GetAllBooksHandler.cs",
+              "RelativeDocumentMoniker": "src\\FGV.Application\\Books\\GetAll\\GetAllBooksHandler.cs",
+              "ToolTip": "C:\\PROJETOS\\Provas\\Teste.FGV\\br.fgv\\src\\FGV.Application\\Books\\GetAll\\GetAllBooksHandler.cs",
+              "RelativeToolTip": "src\\FGV.Application\\Books\\GetAll\\GetAllBooksHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-03T00:09:58.281Z",
+              "WhenOpened": "2026-04-03T00:54:46.233Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\PROJETOS\\Provas\\Teste.FGV\\br.fgv\\src\\FGV.Infrastructure\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "src\\FGV.Infrastructure\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\PROJETOS\\Provas\\Teste.FGV\\br.fgv\\src\\FGV.Infrastructure\\ApplicationDbContext.cs",
-              "RelativeToolTip": "src\\FGV.Infrastructure\\ApplicationDbContext.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAjwBUAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "C:\\PROJETOS\\Provas\\Teste.FGV\\br.fgv\\src\\FGV.Infrastructure\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "src\\FGV.Infrastructure\\DependencyInjection.cs",
+              "ToolTip": "C:\\PROJETOS\\Provas\\Teste.FGV\\br.fgv\\src\\FGV.Infrastructure\\DependencyInjection.cs",
+              "RelativeToolTip": "src\\FGV.Infrastructure\\DependencyInjection.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-03T00:05:47.038Z",
+              "WhenOpened": "2026-04-03T00:51:07.638Z",
               "EditorCaption": ""
             },
             {
@@ -58,9 +66,35 @@
               "RelativeDocumentMoniker": "src\\FGV.Api\\Program.cs",
               "ToolTip": "C:\\PROJETOS\\Provas\\Teste.FGV\\br.fgv\\src\\FGV.Api\\Program.cs",
               "RelativeToolTip": "src\\FGV.Api\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAmwDMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-03T00:05:40.857Z",
+              "WhenOpened": "2026-04-03T00:45:09.152Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BookRepository.cs",
+              "DocumentMoniker": "C:\\PROJETOS\\Provas\\Teste.FGV\\br.fgv\\src\\FGV.Infrastructure\\Repositories\\BookRepository.cs",
+              "RelativeDocumentMoniker": "src\\FGV.Infrastructure\\Repositories\\BookRepository.cs",
+              "ToolTip": "C:\\PROJETOS\\Provas\\Teste.FGV\\br.fgv\\src\\FGV.Infrastructure\\Repositories\\BookRepository.cs",
+              "RelativeToolTip": "src\\FGV.Infrastructure\\Repositories\\BookRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-03T00:47:01.6Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Repository.cs",
+              "DocumentMoniker": "C:\\PROJETOS\\Provas\\Teste.FGV\\br.fgv\\src\\FGV.Infrastructure\\Repositories\\Repository.cs",
+              "RelativeDocumentMoniker": "src\\FGV.Infrastructure\\Repositories\\Repository.cs",
+              "ToolTip": "C:\\PROJETOS\\Provas\\Teste.FGV\\br.fgv\\src\\FGV.Infrastructure\\Repositories\\Repository.cs",
+              "RelativeToolTip": "src\\FGV.Infrastructure\\Repositories\\Repository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-03T00:46:59.628Z",
               "EditorCaption": ""
             }
           ]

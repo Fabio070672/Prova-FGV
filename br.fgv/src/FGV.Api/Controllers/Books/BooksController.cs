@@ -1,10 +1,6 @@
-using FGV.Application.Abstractions.Messaging;
 using FGV.Application.Books;
-using FGV.Application.Books.Create;
-using FGV.Application.Books.Delete;
 using FGV.Application.Books.GetAll;
-using FGV.Application.Books.GetById;
-using FGV.Application.Books.Update;
+using FGV.Application.Interfaces;
 using FGV.SharedKernel;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -13,6 +9,9 @@ namespace FGV.Api.Controllers.Books;
 
 /// <summary>
 /// Gerenciamento de Livros
+/// Controller seguindo princípios SOLID:
+/// - SRP: Responsável apenas por receber requisições HTTP e delegar ao serviço
+/// - DIP: Depende da abstração IBookService
 /// </summary>
 [Route("api/books")]
 [ApiController]
@@ -20,11 +19,16 @@ namespace FGV.Api.Controllers.Books;
 [SwaggerTag("Endpoints para CRUD de livros")]
 public sealed class BooksController : ControllerBase
 {
+    private readonly IBookService _bookService;
+
+    public BooksController(IBookService bookService)
+    {
+        _bookService = bookService;
+    }
     /// <summary>
     /// Cria um novo livro
     /// </summary>
     /// <param name="request">Dados do livro a ser criado</param>
-    /// <param name="handler">Handler do comando</param>
     /// <param name="cancellationToken">Token de cancelamento</param>
     /// <returns>ID do livro criado</returns>
     /// <response code="201">Livro criado com sucesso</response>
@@ -40,15 +44,13 @@ public sealed class BooksController : ControllerBase
     [ProducesResponseType(typeof(Error), StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Create(
         [FromBody] CreateBookRequest request,
-        ICommandHandler<CreateBookCommand, string> handler,
         CancellationToken cancellationToken)
     {
-        var command = new CreateBookCommand(
+        var result = await _bookService.CreateAsync(
             request.Title,
             request.Author,
-            request.Edition);
-
-        Result<string> result = await handler.HandleAsync(command, cancellationToken);
+            request.Edition,
+            cancellationToken);
 
         if (result.IsFailure)
         {
@@ -65,7 +67,6 @@ public sealed class BooksController : ControllerBase
     /// Busca um livro por ID
     /// </summary>
     /// <param name="id">ID do livro</param>
-    /// <param name="handler">Handler da query</param>
     /// <param name="cancellationToken">Token de cancelamento</param>
     /// <returns>Dados do livro encontrado</returns>
     /// <response code="200">Livro encontrado</response>
@@ -81,12 +82,9 @@ public sealed class BooksController : ControllerBase
     [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetById(
         [FromRoute] string id,
-        IQueryHandler<GetBookByIdQuery, BookResponse> handler,
         CancellationToken cancellationToken)
     {
-        var query = new GetBookByIdQuery(id);
-
-        Result<BookResponse> result = await handler.HandleAsync(query, cancellationToken);
+        var result = await _bookService.GetByIdAsync(id, cancellationToken);
 
         if (result.IsFailure)
         {
@@ -99,25 +97,64 @@ public sealed class BooksController : ControllerBase
     /// <summary>
     /// Lista todos os livros
     /// </summary>
-    /// <param name="handler">Handler da query</param>
+    /// <param name="sortBy">Campos para ordenação separados por vírgula (ex: Title,Author,Edition)</param>
+    /// <param name="sortOrder">Direções de ordenação separadas por vírgula (Asc ou Desc, ex: Asc,Desc)</param>
     /// <param name="cancellationToken">Token de cancelamento</param>
-    /// <returns>Lista de livros ativos</returns>
+    /// <returns>Lista de livros ativos ordenados</returns>
     /// <response code="200">Lista de livros retornada com sucesso</response>
+    /// <response code="400">Parâmetros de ordenação inválidos</response>
+    /// <remarks>
+    /// Exemplos de uso:
+    /// - GET /api/books (retorna todos os livros sem ordenação específica)
+    /// - GET /api/books?sortBy=Title&amp;sortOrder=Asc (ordena por título ascendente)
+    /// - GET /api/books?sortBy=Author,Title&amp;sortOrder=Desc,Asc (ordena por autor desc, depois título asc)
+    /// - GET /api/books?sortBy=Edition,Author,Title&amp;sortOrder=Desc,Desc,Asc (ordenação por 3 campos)
+    /// 
+    /// Campos disponíveis: Title, Author, Edition
+    /// Direções: Asc (ascendente) ou Desc (descendente)
+    /// </remarks>
     [HttpGet]
     [SwaggerOperation(
-        Summary = "Lista todos os livros",
-        Description = "Retorna uma lista com todos os livros ativos no catálogo, ordenados por título",
+        Summary = "Lista todos os livros com ordenação customizável",
+        Description = "Retorna uma lista com todos os livros ativos, com suporte a ordenação dinâmica por múltiplos campos",
         OperationId = "GetAllBooks",
         Tags = new[] { "Books" }
     )]
     [ProducesResponseType(typeof(IEnumerable<BookResponse>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(Error), StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> GetAll(
-        IQueryHandler<GetAllBooksQuery, IEnumerable<BookResponse>> handler,
+        [FromQuery] string? sortBy,
+        [FromQuery] string? sortOrder,
         CancellationToken cancellationToken)
     {
-        var query = new GetAllBooksQuery();
+        List<SortRule>? sortRules = null;
 
-        Result<IEnumerable<BookResponse>> result = await handler.HandleAsync(query, cancellationToken);
+        // Se foram fornecidos parâmetros de ordenação dinâmica
+        if (!string.IsNullOrWhiteSpace(sortBy))
+        {
+            var fields = sortBy.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+            var directions = string.IsNullOrWhiteSpace(sortOrder)
+                ? Enumerable.Repeat("Asc", fields.Length).ToArray()
+                : sortOrder.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+
+            // Se houver menos direções que campos, preenche com "Asc"
+            if (directions.Length < fields.Length)
+            {
+                directions = directions
+                    .Concat(Enumerable.Repeat("Asc", fields.Length - directions.Length))
+                    .ToArray();
+            }
+
+            sortRules = fields
+                .Select((field, index) => new SortRule
+                {
+                    Field = field,
+                    Direction = index < directions.Length ? directions[index] : "Asc"
+                })
+                .ToList();
+        }
+
+        var result = await _bookService.GetAllAsync(sortRules, cancellationToken);
 
         if (result.IsFailure)
         {
@@ -132,7 +169,6 @@ public sealed class BooksController : ControllerBase
     /// </summary>
     /// <param name="id">ID do livro a ser atualizado</param>
     /// <param name="request">Novos dados do livro</param>
-    /// <param name="handler">Handler do comando</param>
     /// <param name="cancellationToken">Token de cancelamento</param>
     /// <returns>Sem conteúdo em caso de sucesso</returns>
     /// <response code="204">Livro atualizado com sucesso</response>
@@ -151,16 +187,14 @@ public sealed class BooksController : ControllerBase
     public async Task<IActionResult> Update(
         [FromRoute] string id,
         [FromBody] UpdateBookRequest request,
-        ICommandHandler<UpdateBookCommand> handler,
         CancellationToken cancellationToken)
     {
-        var command = new UpdateBookCommand(
+        var result = await _bookService.UpdateAsync(
             id,
             request.Title,
             request.Author,
-            request.Edition);
-
-        Result result = await handler.HandleAsync(command, cancellationToken);
+            request.Edition,
+            cancellationToken);
 
         if (result.IsFailure)
         {
@@ -174,7 +208,6 @@ public sealed class BooksController : ControllerBase
     /// Deleta um livro (soft delete)
     /// </summary>
     /// <param name="id">ID do livro a ser deletado</param>
-    /// <param name="handler">Handler do comando</param>
     /// <param name="cancellationToken">Token de cancelamento</param>
     /// <returns>Sem conteúdo em caso de sucesso</returns>
     /// <response code="204">Livro deletado com sucesso</response>
@@ -190,12 +223,9 @@ public sealed class BooksController : ControllerBase
     [ProducesResponseType(typeof(Error), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Delete(
         [FromRoute] string id,
-        ICommandHandler<DeleteBookCommand> handler,
         CancellationToken cancellationToken)
     {
-        var command = new DeleteBookCommand(id);
-
-        Result result = await handler.HandleAsync(command, cancellationToken);
+        var result = await _bookService.DeleteAsync(id, cancellationToken);
 
         if (result.IsFailure)
         {

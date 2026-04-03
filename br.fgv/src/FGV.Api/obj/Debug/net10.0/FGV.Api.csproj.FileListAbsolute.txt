@@ -61,3 +61,6 @@ C:\PROJETOS\Provas\Teste.FGV\br.fgv\src\FGV.Api\bin\Debug\net10.0\FGV.Api.xml
 C:\PROJETOS\Provas\Teste.FGV\br.fgv\src\FGV.Api\bin\Debug\net10.0\Swashbuckle.AspNetCore.Annotations.dll
 C:\PROJETOS\Provas\Teste.FGV\br.fgv\src\FGV.Api\obj\Debug\net10.0\FGV.Api.xml
 C:\PROJETOS\Provas\Teste.FGV\br.fgv\src\FGV.Api\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\PROJETOS\Provas\Teste.FGV\br.fgv\src\FGV.Api\bin\Debug\net10.0\Microsoft.Extensions.Configuration.dll
+C:\PROJETOS\Provas\Teste.FGV\br.fgv\src\FGV.Api\bin\Debug\net10.0\Microsoft.Extensions.Configuration.Binder.dll
+C:\PROJETOS\Provas\Teste.FGV\br.fgv\src\FGV.Api\bin\Debug\net10.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll

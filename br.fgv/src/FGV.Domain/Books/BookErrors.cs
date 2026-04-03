@@ -8,6 +8,10 @@ public static class BookErrors
         "Books.NotFound",
         $"The book with Id '{bookId}' was not found");
 
+    public static Error InvalidId => new(
+        "Books.InvalidId",
+        "The book ID format is invalid");
+
     public static Error InvalidTitle => new(
         "Books.InvalidTitle",
         "The book title cannot be empty");
@@ -20,3 +24,4 @@ public static class BookErrors
         "Books.InvalidEdition",
         "The book edition must be a positive number");
 }
+

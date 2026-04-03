@@ -1,6 +1,0 @@
-@FGV.Api_HostAddress = http://localhost:5145
-
-GET {{FGV.Api_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

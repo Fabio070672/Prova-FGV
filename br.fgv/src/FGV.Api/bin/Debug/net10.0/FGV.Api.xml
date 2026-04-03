@@ -7,58 +7,69 @@
         <member name="T:FGV.Api.Controllers.Books.BooksController">
             <summary>
             Gerenciamento de Livros
+            Controller seguindo princípios SOLID:
+            - SRP: Responsável apenas por receber requisições HTTP e delegar ao serviço
+            - DIP: Depende da abstração IBookService
             </summary>
         </member>
-        <member name="M:FGV.Api.Controllers.Books.BooksController.Create(FGV.Api.Controllers.Books.CreateBookRequest,FGV.Application.Abstractions.Messaging.ICommandHandler{FGV.Application.Books.Create.CreateBookCommand,System.String},System.Threading.CancellationToken)">
+        <member name="M:FGV.Api.Controllers.Books.BooksController.Create(FGV.Api.Controllers.Books.CreateBookRequest,System.Threading.CancellationToken)">
             <summary>
             Cria um novo livro
             </summary>
             <param name="request">Dados do livro a ser criado</param>
-            <param name="handler">Handler do comando</param>
             <param name="cancellationToken">Token de cancelamento</param>
             <returns>ID do livro criado</returns>
             <response code="201">Livro criado com sucesso</response>
             <response code="400">Dados inválidos</response>
         </member>
-        <member name="M:FGV.Api.Controllers.Books.BooksController.GetById(System.String,FGV.Application.Abstractions.Messaging.IQueryHandler{FGV.Application.Books.GetById.GetBookByIdQuery,FGV.Application.Books.BookResponse},System.Threading.CancellationToken)">
+        <member name="M:FGV.Api.Controllers.Books.BooksController.GetById(System.String,System.Threading.CancellationToken)">
             <summary>
             Busca um livro por ID
             </summary>
             <param name="id">ID do livro</param>
-            <param name="handler">Handler da query</param>
             <param name="cancellationToken">Token de cancelamento</param>
             <returns>Dados do livro encontrado</returns>
             <response code="200">Livro encontrado</response>
             <response code="404">Livro não encontrado</response>
         </member>
-        <member name="M:FGV.Api.Controllers.Books.BooksController.GetAll(FGV.Application.Abstractions.Messaging.IQueryHandler{FGV.Application.Books.GetAll.GetAllBooksQuery,System.Collections.Generic.IEnumerable{FGV.Application.Books.BookResponse}},System.Threading.CancellationToken)">
+        <member name="M:FGV.Api.Controllers.Books.BooksController.GetAll(System.String,System.String,System.Threading.CancellationToken)">
             <summary>
             Lista todos os livros
             </summary>
-            <param name="handler">Handler da query</param>
+            <param name="sortBy">Campos para ordenação separados por vírgula (ex: Title,Author,Edition)</param>
+            <param name="sortOrder">Direções de ordenação separadas por vírgula (Asc ou Desc, ex: Asc,Desc)</param>
             <param name="cancellationToken">Token de cancelamento</param>
-            <returns>Lista de livros ativos</returns>
+            <returns>Lista de livros ativos ordenados</returns>
             <response code="200">Lista de livros retornada com sucesso</response>
+            <response code="400">Parâmetros de ordenação inválidos</response>
+            <remarks>
+            Exemplos de uso:
+            - GET /api/books (retorna todos os livros sem ordenação específica)
+            - GET /api/books?sortBy=Title&amp;sortOrder=Asc (ordena por título ascendente)
+            - GET /api/books?sortBy=Author,Title&amp;sortOrder=Desc,Asc (ordena por autor desc, depois título asc)
+            - GET /api/books?sortBy=Edition,Author,Title&amp;sortOrder=Desc,Desc,Asc (ordenação por 3 campos)
+            
+            Campos disponíveis: Title, Author, Edition
+            Direções: Asc (ascendente) ou Desc (descendente)
+            </remarks>
         </member>
-        <member name="M:FGV.Api.Controllers.Books.BooksController.Update(System.String,FGV.Api.Controllers.Books.UpdateBookRequest,FGV.Application.Abstractions.Messaging.ICommandHandler{FGV.Application.Books.Update.UpdateBookCommand},System.Threading.CancellationToken)">
+        <member name="M:FGV.Api.Controllers.Books.BooksController.Update(System.String,FGV.Api.Controllers.Books.UpdateBookRequest,System.Threading.CancellationToken)">
             <summary>
             Atualiza um livro existente
             </summary>
             <param name="id">ID do livro a ser atualizado</param>
             <param name="request">Novos dados do livro</param>
-            <param name="handler">Handler do comando</param>
             <param name="cancellationToken">Token de cancelamento</param>
             <returns>Sem conteúdo em caso de sucesso</returns>
             <response code="204">Livro atualizado com sucesso</response>
             <response code="400">Dados inválidos</response>
             <response code="404">Livro não encontrado</response>
         </member>
-        <member name="M:FGV.Api.Controllers.Books.BooksController.Delete(System.String,FGV.Application.Abstractions.Messaging.ICommandHandler{FGV.Application.Books.Delete.DeleteBookCommand},System.Threading.CancellationToken)">
+        <member name="M:FGV.Api.Controllers.Books.BooksController.Delete(System.String,System.Threading.CancellationToken)">
             <summary>
             Deleta um livro (soft delete)
             </summary>
             <param name="id">ID do livro a ser deletado</param>
-            <param name="handler">Handler do comando</param>
             <param name="cancellationToken">Token de cancelamento</param>
             <returns>Sem conteúdo em caso de sucesso</returns>
             <response code="204">Livro deletado com sucesso</response>

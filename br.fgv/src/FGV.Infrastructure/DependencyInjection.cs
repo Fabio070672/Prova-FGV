@@ -1,5 +1,8 @@
 using FGV.Domain.Books;
+using FGV.Domain.Sorting;
+using FGV.Infrastructure.Options;
 using FGV.Infrastructure.Repositories;
+using FGV.Infrastructure.Services;
 using FGV.SharedKernel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -22,6 +25,14 @@ public static class DependencyInjection
         // Register repositories
         services.AddScoped<IBookRepository, BookRepository>();
 
+        // Configure book sorting options
+        services.Configure<BookSortingOptions>(
+            configuration.GetSection(BookSortingOptions.SectionName));
+
+        // Register sorting service
+        services.AddScoped<IBookSortingService, BookSortingService>();
+
         return services;
     }
 }
+

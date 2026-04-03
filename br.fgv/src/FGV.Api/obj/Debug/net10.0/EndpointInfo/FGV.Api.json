@@ -61,9 +61,27 @@
         "tags": [
           "Books"
         ],
-        "summary": "Lista todos os livros",
-        "description": "Retorna uma lista com todos os livros ativos no catálogo, ordenados por título",
+        "summary": "Lista todos os livros com ordenação customizável",
+        "description": "Retorna uma lista com todos os livros ativos, com suporte a ordenação dinâmica por múltiplos campos",
         "operationId": "GetAllBooks",
+        "parameters": [
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Campos para ordenação separados por vírgula (ex: Title,Author,Edition)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "Direções de ordenação separadas por vírgula (Asc ou Desc, ex: Asc,Desc)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Lista de livros retornada com sucesso",
@@ -74,6 +92,16 @@
                   "items": {
                     "$ref": "#/components/schemas/BookResponse"
                   }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parâmetros de ordenação inválidos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
                 }
               }
             }
@@ -316,7 +344,7 @@
   "tags": [
     {
       "name": "Books",
-      "description": "Gerenciamento de Livros"
+      "description": "Gerenciamento de Livros\r\nController seguindo princípios SOLID:\r\n- SRP: Responsável apenas por receber requisições HTTP e delegar ao serviço\r\n- DIP: Depende da abstração IBookService"
     }
   ]
 }

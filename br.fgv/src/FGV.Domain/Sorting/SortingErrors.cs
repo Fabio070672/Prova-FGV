@@ -27,4 +27,16 @@ public static class SortingErrors
     public static Error RuleNotFound(string ruleId) => new(
         "Sorting.RuleNotFound",
         $"The sorting rule with Id '{ruleId}' was not found");
+
+    public static Error NoRulesConfigured() => new(
+        "Sorting.NoRulesConfigured",
+        "Sorting configuration has no rules defined");
+
+    public static Error NoActiveRules() => new(
+        "Sorting.NoActiveRules",
+        "Sorting configuration has no active rules");
+
+    public static Error SortingFailed(string reason) => new(
+        "Sorting.Failed",
+        $"Failed to sort books: {reason}");
 }

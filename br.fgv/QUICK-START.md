@@ -1,0 +1,160 @@
+# ? Quick Start - Serviço de Ordenação FGV
+
+## ?? Executar em 3 Passos
+
+### 1?? Build
+```bash
+dotnet build
+```
+? Resultado esperado: `Build succeeded`
+
+### 2?? Testes
+```bash
+dotnet test
+```
+? Resultado esperado: `Passed! - 6 tests in ~300ms`
+
+### 3?? Run API
+```bash
+cd src/FGV.Api
+dotnet run
+```
+? Resultado esperado: `Now listening on: https://localhost:5001`
+
+---
+
+## ?? Testar os Casos FGV
+
+### Caso 1: Título Ascendente
+```bash
+curl -X GET "https://localhost:5001/api/books?configurationName=TitleAscending"
+```
+**Resultado esperado**: Livros 3, 4, 1, 2
+```json
+[
+  { "title": "Head First Design Patterns", "author": "Elisabeth Freeman", "edition": 2004 },
+  { "title": "Internet & World Wide Web: How to Program", "author": "Deitel & Deitel", "edition": 2007 },
+  { "title": "Java How to Program", "author": "Deitel & Deitel", "edition": 2007 },
+  { "title": "Patterns of Enterprise Application Architecture", "author": "Martin Fowler", "edition": 2002 }
+]
+```
+
+### Caso 2: Autor Asc + Título Desc
+```bash
+curl -X GET "https://localhost:5001/api/books?configurationName=AuthorAscendingTitleDescending"
+```
+**Resultado esperado**: Livros 1, 4, 3, 2
+
+### Caso 3: Edição Desc + Autor Desc + Título Asc
+```bash
+curl -X GET "https://localhost:5001/api/books?configurationName=EditionDescendingAuthorDescendingTitleAscending"
+```
+**Resultado esperado**: Livros 4, 1, 3, 2
+
+---
+
+## ?? Swagger UI
+
+Abra no navegador:
+```
+https://localhost:5001/swagger
+```
+
+Interface visual para testar todos os endpoints.
+
+---
+
+## ?? Documentação Completa
+
+| Documento | Descrição |
+|-----------|-----------|
+| **RESUMO-EXECUTIVO.md** | Visão geral e status |
+| **ENTREGAVEIS.md** | Checklist completo |
+| **DESIGN-DOCUMENT.md** | Arquitetura e UML |
+| **ORDENACAO-README.md** | Guia detalhado |
+
+---
+
+## ? Validação Rápida
+
+```bash
+# Build
+dotnet build
+# ? Build succeeded
+
+# Tests
+dotnet test
+# ? Passed: 6/6 tests
+
+# Run
+cd src/FGV.Api && dotnet run
+# ? Listening on https://localhost:5001
+
+# Test endpoint
+curl https://localhost:5001/api/books
+# ? Retorna 4 livros ordenados
+```
+
+---
+
+## ?? Casos de Teste FGV - Resumo
+
+| Caso | Config | Resultado |
+|------|--------|-----------|
+| 1 | `TitleAscending` | 3, 4, 1, 2 |
+| 2 | `AuthorAscendingTitleDescending` | 1, 4, 3, 2 |
+| 3 | `EditionDescendingAuthorDescendingTitleAscending` | 4, 1, 3, 2 |
+| 4 | Null collection | OrdenacaoException |
+| 5 | Empty collection | Empty result |
+
+**Status**: ? Todos os casos implementados e passando
+
+---
+
+## ?? Troubleshooting
+
+### Build falha?
+```bash
+dotnet restore
+dotnet clean
+dotnet build
+```
+
+### Testes falhando?
+```bash
+dotnet test --logger "console;verbosity=detailed"
+```
+
+### Porta em uso?
+Altere em `appsettings.json`:
+```json
+"Kestrel": {
+  "Endpoints": {
+    "Https": {
+      "Url": "https://localhost:5002"
+    }
+  }
+}
+```
+
+---
+
+## ?? Estrutura Rápida
+
+```
+src/
+??? FGV.Domain/Sorting/
+?   ??? IBookSortingService.cs      ? Interface
+?   ??? OrdenacaoException.cs        ? Exception
+??? FGV.Infrastructure/Services/
+?   ??? BookSortingService.cs        ? Implementação
+??? FGV.Api/
+?   ??? appsettings.json              ? Configurações
+tests/
+??? FGV.Tests/Sorting/
+    ??? BookSortingServiceTests.cs    ? Testes
+```
+
+---
+
+? **Pronto para submissão!**

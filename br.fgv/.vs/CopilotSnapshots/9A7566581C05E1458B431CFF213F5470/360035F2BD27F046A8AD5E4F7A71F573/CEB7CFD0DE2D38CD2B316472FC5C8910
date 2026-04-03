@@ -1,0 +1,33 @@
+﻿using Br.Fgv.Application.Abstractions.Messaging;
+using Br.Fgv.Domain.Livros;
+using Br.Fgv.SharedKernel;
+
+namespace Br.Fgv.Application.Livros.GetAll;
+
+internal sealed class GetAllLivrosHandler : IQueryHandler<GetAllLivrosQuery, List<LivroResponse>>
+{
+    private readonly ILivroRepository _livroRepository;
+
+    public GetAllLivrosHandler(ILivroRepository livroRepository)
+    {
+        _livroRepository = livroRepository;
+    }
+
+    public async Task<Result<List<LivroResponse>>> HandleAsync(
+        GetAllLivrosQuery query,
+        CancellationToken cancellationToken)
+    {
+        List<Livro> livros = await _livroRepository.GetAllAsync(cancellationToken);
+
+        var response = livros.Select(l => new LivroResponse(
+            l.Id.Value,
+            l.Titulo,
+            l.Autor,
+            l.Edicao,
+            l.Active ?? false,
+            l.CreatedAt,
+            l.UpdatedAt)).ToList();
+
+        return Result.Success(response);
+    }
+}

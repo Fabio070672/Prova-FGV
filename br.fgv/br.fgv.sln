@@ -1,0 +1,94 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36915.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "copilot", "copilot", "{274EB210-2D08-46C9-9598-045CD9986417}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\.github\copilot\COMPLETE-INDEX.md = ..\..\.github\copilot\COMPLETE-INDEX.md
+		..\..\.github\copilot\copilot-instructions-master.md = ..\..\.github\copilot\copilot-instructions-master.md
+		..\..\.github\copilot\copilot-instructions.md = ..\..\.github\copilot\copilot-instructions.md
+		..\..\.github\copilot\COPILOT-SYSTEM-INDEX.md = ..\..\.github\copilot\COPILOT-SYSTEM-INDEX.md
+		..\..\.github\copilot\EXECUTIVE-SUMMARY.md = ..\..\.github\copilot\EXECUTIVE-SUMMARY.md
+		..\..\.github\copilot\PROMPT-LIBRARY.md = ..\..\.github\copilot\PROMPT-LIBRARY.md
+		..\..\.github\copilot\README.md = ..\..\.github\copilot\README.md
+		..\..\.github\copilot\VISUAL-QUICK-REFERENCE.md = ..\..\.github\copilot\VISUAL-QUICK-REFERENCE.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "copilot-agents", "copilot-agents", "{33C6F408-C8BE-4D22-ACB3-8760254BA9A2}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\.github\copilot\copilot-agents\clean-architecture-agent.md = ..\..\.github\copilot\copilot-agents\clean-architecture-agent.md
+		..\..\.github\copilot\copilot-agents\testing-agent.md = ..\..\.github\copilot\copilot-agents\testing-agent.md
+		..\..\.github\copilot\copilot-agents\validation-agent.md = ..\..\.github\copilot\copilot-agents\validation-agent.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "copilot-guides", "copilot-guides", "{29BA8515-7BF4-445E-BD01-93A14B6EB5E0}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\.github\copilot\copilot-guides\complete-feature-implementation.md = ..\..\.github\copilot\copilot-guides\complete-feature-implementation.md
+		..\..\.github\copilot\copilot-guides\migration-guide.md = ..\..\.github\copilot\copilot-guides\migration-guide.md
+		..\..\.github\copilot\copilot-guides\project-structure-template.md = ..\..\.github\copilot\copilot-guides\project-structure-template.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "copilot-skills", "copilot-skills", "{4FCD8FFF-FBAF-4F5D-98A4-20D24EDF29FA}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\.github\copilot\copilot-skills\api-controller-skills.md = ..\..\.github\copilot\copilot-skills\api-controller-skills.md
+		..\..\.github\copilot\copilot-skills\cqrs-pattern-skills.md = ..\..\.github\copilot\copilot-skills\cqrs-pattern-skills.md
+		..\..\.github\copilot\copilot-skills\dependency-injection-guide.md = ..\..\.github\copilot\copilot-skills\dependency-injection-guide.md
+		..\..\.github\copilot\copilot-skills\domain-driven-design-skills.md = ..\..\.github\copilot\copilot-skills\domain-driven-design-skills.md
+		..\..\.github\copilot\copilot-skills\entity-framework-skills.md = ..\..\.github\copilot\copilot-skills\entity-framework-skills.md
+		..\..\.github\copilot\copilot-skills\repository-pattern-skills.md = ..\..\.github\copilot\copilot-skills\repository-pattern-skills.md
+		..\..\.github\copilot\copilot-skills\result-pattern-skills.md = ..\..\.github\copilot\copilot-skills\result-pattern-skills.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FGV.Api", "src\FGV.Api\FGV.Api.csproj", "{8019CBEB-24A4-4E65-6436-3F75AE194A2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FGV.Application", "src\FGV.Application\FGV.Application.csproj", "{D7384A0A-4787-DD7E-3D7E-C3148E9CF608}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FGV.Domain", "src\FGV.Domain\FGV.Domain.csproj", "{93476C38-9C66-348D-A112-60A480FBC5D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FGV.Infrastructure", "src\FGV.Infrastructure\FGV.Infrastructure.csproj", "{E6D50BB0-E925-8674-F839-BDA9469032A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FGV.SharedKernel", "src\FGV.SharedKernel\FGV.SharedKernel.csproj", "{B45CC08F-034C-31DC-70C7-1D4353D4795D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8019CBEB-24A4-4E65-6436-3F75AE194A2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8019CBEB-24A4-4E65-6436-3F75AE194A2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8019CBEB-24A4-4E65-6436-3F75AE194A2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8019CBEB-24A4-4E65-6436-3F75AE194A2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7384A0A-4787-DD7E-3D7E-C3148E9CF608}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7384A0A-4787-DD7E-3D7E-C3148E9CF608}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7384A0A-4787-DD7E-3D7E-C3148E9CF608}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7384A0A-4787-DD7E-3D7E-C3148E9CF608}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93476C38-9C66-348D-A112-60A480FBC5D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93476C38-9C66-348D-A112-60A480FBC5D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93476C38-9C66-348D-A112-60A480FBC5D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93476C38-9C66-348D-A112-60A480FBC5D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6D50BB0-E925-8674-F839-BDA9469032A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6D50BB0-E925-8674-F839-BDA9469032A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6D50BB0-E925-8674-F839-BDA9469032A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6D50BB0-E925-8674-F839-BDA9469032A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B45CC08F-034C-31DC-70C7-1D4353D4795D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B45CC08F-034C-31DC-70C7-1D4353D4795D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B45CC08F-034C-31DC-70C7-1D4353D4795D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B45CC08F-034C-31DC-70C7-1D4353D4795D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{274EB210-2D08-46C9-9598-045CD9986417} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{33C6F408-C8BE-4D22-ACB3-8760254BA9A2} = {274EB210-2D08-46C9-9598-045CD9986417}
+		{29BA8515-7BF4-445E-BD01-93A14B6EB5E0} = {274EB210-2D08-46C9-9598-045CD9986417}
+		{4FCD8FFF-FBAF-4F5D-98A4-20D24EDF29FA} = {274EB210-2D08-46C9-9598-045CD9986417}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6EBC5120-28A0-4BA0-B8EF-EFA763CE58E9}
+	EndGlobalSection
+EndGlobal

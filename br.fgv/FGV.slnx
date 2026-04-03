@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/FGV.Api/FGV.Api.csproj" />
+    <Project Path="src/FGV.Application/FGV.Application.csproj" />
+    <Project Path="src/FGV.Domain/FGV.Domain.csproj" />
+    <Project Path="src/FGV.Infrastructure/FGV.Infrastructure.csproj" />
+    <Project Path="src/FGV.SharedKernel/FGV.SharedKernel.csproj" />
+  </Folder>
+</Solution>

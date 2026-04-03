@@ -1,0 +1,31 @@
+using FluentValidation;
+
+namespace FGV.Application.Books.Update;
+
+internal sealed class UpdateBookValidator : AbstractValidator<UpdateBookCommand>
+{
+    public UpdateBookValidator()
+    {
+        RuleFor(x => x.Id)
+            .NotEmpty()
+            .WithMessage("Id is required");
+
+        RuleFor(x => x.Title)
+            .NotEmpty()
+            .WithMessage("Title is required")
+            .MaximumLength(500)
+            .WithMessage("Title must not exceed 500 characters");
+
+        RuleFor(x => x.Author)
+            .NotEmpty()
+            .WithMessage("Author is required")
+            .MaximumLength(300)
+            .WithMessage("Author must not exceed 300 characters");
+
+        RuleFor(x => x.Edition)
+            .GreaterThan(0)
+            .WithMessage("Edition must be greater than 0")
+            .LessThanOrEqualTo(DateTime.UtcNow.Year)
+            .WithMessage("Edition cannot be in the future");
+    }
+}

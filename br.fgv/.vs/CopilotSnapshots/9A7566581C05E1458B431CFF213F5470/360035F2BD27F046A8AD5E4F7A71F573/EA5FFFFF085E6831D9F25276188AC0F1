@@ -1,0 +1,51 @@
+﻿using Br.Fgv.Domain.Livros;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace Br.Fgv.Infrastructure.Configurations;
+
+internal sealed class LivroConfiguration : IEntityTypeConfiguration<Livro>
+{
+    public void Configure(EntityTypeBuilder<Livro> builder)
+    {
+        builder.ToTable("livros");
+
+        builder.HasKey(e => e.Id);
+
+        builder.Property(e => e.Id)
+            .HasColumnName("id")
+            .HasConversion(id => id.Value, value => new LivroId(value))
+            .HasMaxLength(36)
+            .IsRequired();
+
+        builder.Property(e => e.Titulo)
+            .HasColumnName("titulo")
+            .HasMaxLength(500)
+            .IsRequired();
+
+        builder.Property(e => e.Autor)
+            .HasColumnName("autor")
+            .HasMaxLength(300)
+            .IsRequired();
+
+        builder.Property(e => e.Edicao)
+            .HasColumnName("edicao")
+            .IsRequired();
+
+        builder.Property(e => e.CreatedAt)
+            .HasColumnName("created_at")
+            .IsRequired();
+
+        builder.Property(e => e.UpdatedAt)
+            .HasColumnName("updated_at");
+
+        builder.Property(e => e.Active)
+            .HasColumnName("active")
+            .IsRequired();
+
+        // Índices para otimização de queries de ordenação
+        builder.HasIndex(e => e.Titulo).HasDatabaseName("idx_livros_titulo");
+        builder.HasIndex(e => e.Autor).HasDatabaseName("idx_livros_autor");
+        builder.HasIndex(e => e.Edicao).HasDatabaseName("idx_livros_edicao");
+    }
+}

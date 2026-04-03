@@ -1,0 +1,40 @@
+﻿using Br.Fgv.Application.Abstractions.Messaging;
+using Br.Fgv.Domain.Livros;
+using Br.Fgv.SharedKernel;
+
+namespace Br.Fgv.Application.Livros.GetById;
+
+internal sealed class GetLivroByIdHandler : IQueryHandler<GetLivroByIdQuery, LivroResponse>
+{
+    private readonly ILivroRepository _livroRepository;
+
+    public GetLivroByIdHandler(ILivroRepository livroRepository)
+    {
+        _livroRepository = livroRepository;
+    }
+
+    public async Task<Result<LivroResponse>> HandleAsync(
+        GetLivroByIdQuery query,
+        CancellationToken cancellationToken)
+    {
+        Livro? livro = await _livroRepository.GetByIdAsync(
+            new LivroId(query.Id),
+            cancellationToken);
+
+        if (livro is null)
+        {
+            return Result.Failure<LivroResponse>(LivroErrors.NotFound(query.Id));
+        }
+
+        var response = new LivroResponse(
+            livro.Id.Value,
+            livro.Titulo,
+            livro.Autor,
+            livro.Edicao,
+            livro.Active ?? false,
+            livro.CreatedAt,
+            livro.UpdatedAt);
+
+        return Result.Success(response);
+    }
+}

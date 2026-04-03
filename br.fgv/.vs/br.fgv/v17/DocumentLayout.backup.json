@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\PROJETOS\\Provas\\Teste.FGV\\br.fgv\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E6D50BB0-E925-8674-F839-BDA9469032A2}|src\\FGV.Infrastructure\\FGV.Infrastructure.csproj|c:\\projetos\\provas\\teste.fgv\\br.fgv\\src\\fgv.infrastructure\\configurations\\books\\bookconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E6D50BB0-E925-8674-F839-BDA9469032A2}|src\\FGV.Infrastructure\\FGV.Infrastructure.csproj|solutionrelative:src\\fgv.infrastructure\\configurations\\books\\bookconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6D50BB0-E925-8674-F839-BDA9469032A2}|src\\FGV.Infrastructure\\FGV.Infrastructure.csproj|c:\\projetos\\provas\\teste.fgv\\br.fgv\\src\\fgv.infrastructure\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E6D50BB0-E925-8674-F839-BDA9469032A2}|src\\FGV.Infrastructure\\FGV.Infrastructure.csproj|solutionrelative:src\\fgv.infrastructure\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8019CBEB-24A4-4E65-6436-3F75AE194A2F}|src\\FGV.Api\\FGV.Api.csproj|c:\\projetos\\provas\\teste.fgv\\br.fgv\\src\\fgv.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8019CBEB-24A4-4E65-6436-3F75AE194A2F}|src\\FGV.Api\\FGV.Api.csproj|solutionrelative:src\\fgv.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BookConfiguration.cs",
+              "DocumentMoniker": "C:\\PROJETOS\\Provas\\Teste.FGV\\br.fgv\\src\\FGV.Infrastructure\\Configurations\\Books\\BookConfiguration.cs",
+              "RelativeDocumentMoniker": "src\\FGV.Infrastructure\\Configurations\\Books\\BookConfiguration.cs",
+              "ToolTip": "C:\\PROJETOS\\Provas\\Teste.FGV\\br.fgv\\src\\FGV.Infrastructure\\Configurations\\Books\\BookConfiguration.cs",
+              "RelativeToolTip": "src\\FGV.Infrastructure\\Configurations\\Books\\BookConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-03T00:09:58.281Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\PROJETOS\\Provas\\Teste.FGV\\br.fgv\\src\\FGV.Infrastructure\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "src\\FGV.Infrastructure\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\PROJETOS\\Provas\\Teste.FGV\\br.fgv\\src\\FGV.Infrastructure\\ApplicationDbContext.cs",
+              "RelativeToolTip": "src\\FGV.Infrastructure\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAjwBUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-03T00:05:47.038Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\PROJETOS\\Provas\\Teste.FGV\\br.fgv\\src\\FGV.Api\\Program.cs",
+              "RelativeDocumentMoniker": "src\\FGV.Api\\Program.cs",
+              "ToolTip": "C:\\PROJETOS\\Provas\\Teste.FGV\\br.fgv\\src\\FGV.Api\\Program.cs",
+              "RelativeToolTip": "src\\FGV.Api\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-03T00:05:40.857Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

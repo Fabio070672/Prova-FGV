@@ -1,0 +1,134 @@
+﻿using Br.Fgv.Application.Abstractions.Messaging;
+using Br.Fgv.Application.Livros;
+using Br.Fgv.Application.Livros.Create;
+using Br.Fgv.Application.Livros.Delete;
+using Br.Fgv.Application.Livros.GetAll;
+using Br.Fgv.Application.Livros.GetById;
+using Br.Fgv.Application.Livros.Update;
+using Br.Fgv.SharedKernel;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Br.Fgv.Api.Controllers;
+
+[Route("api/livros")]
+[ApiController]
+public sealed class LivrosController : ControllerBase
+{
+    [HttpPost]
+    public async Task<IActionResult> Create(
+        CreateLivroRequest request,
+        ICommandHandler<CreateLivroCommand, string> handler,
+        CancellationToken cancellationToken)
+    {
+        var command = new CreateLivroCommand(
+            request.Titulo,
+            request.Autor,
+            request.Edicao);
+
+        Result<string> result = await handler.HandleAsync(command, cancellationToken);
+
+        if (result.IsFailure)
+        {
+            return BadRequest(result.Error);
+        }
+
+        return CreatedAtAction(
+            nameof(GetById),
+            new { id = result.Value },
+            result.Value);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById(
+        string id,
+        IQueryHandler<GetLivroByIdQuery, LivroResponse> handler,
+        CancellationToken cancellationToken)
+    {
+        var query = new GetLivroByIdQuery(id);
+
+        Result<LivroResponse> result = await handler.HandleAsync(query, cancellationToken);
+
+        if (result.IsFailure)
+        {
+            return NotFound(result.Error);
+        }
+
+        return Ok(result.Value);
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAll(
+        IQueryHandler<GetAllLivrosQuery, List<LivroResponse>> handler,
+        CancellationToken cancellationToken)
+    {
+        var query = new GetAllLivrosQuery();
+
+        Result<List<LivroResponse>> result = await handler.HandleAsync(query, cancellationToken);
+
+        if (result.IsFailure)
+        {
+            return BadRequest(result.Error);
+        }
+
+        return Ok(result.Value);
+    }
+
+    [HttpGet("ordenados")]
+    public async Task<IActionResult> GetAllOrdenados(
+        [FromQuery] string? ordenacao,
+        IQueryHandler<GetAllLivrosOrdenadosQuery, List<LivroResponse>> handler,
+        CancellationToken cancellationToken)
+    {
+        var query = new GetAllLivrosOrdenadosQuery(ordenacao);
+
+        Result<List<LivroResponse>> result = await handler.HandleAsync(query, cancellationToken);
+
+        if (result.IsFailure)
+        {
+            return BadRequest(result.Error);
+        }
+
+        return Ok(result.Value);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update(
+        string id,
+        UpdateLivroRequest request,
+        ICommandHandler<UpdateLivroCommand> handler,
+        CancellationToken cancellationToken)
+    {
+        var command = new UpdateLivroCommand(
+            id,
+            request.Titulo,
+            request.Autor,
+            request.Edicao);
+
+        Result result = await handler.HandleAsync(command, cancellationToken);
+
+        if (result.IsFailure)
+        {
+            return BadRequest(result.Error);
+        }
+
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(
+        string id,
+        ICommandHandler<DeleteLivroCommand> handler,
+        CancellationToken cancellationToken)
+    {
+        var command = new DeleteLivroCommand(id);
+
+        Result result = await handler.HandleAsync(command, cancellationToken);
+
+        if (result.IsFailure)
+        {
+            return NotFound(result.Error);
+        }
+
+        return NoContent();
+    }
+}

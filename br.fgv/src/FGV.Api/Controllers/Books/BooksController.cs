@@ -99,25 +99,31 @@ public sealed class BooksController : ControllerBase
     /// <summary>
     /// Lista todos os livros
     /// </summary>
-    /// <param name="configurationName">Nome da configuração de ordenação (opcional, padrão: TitleAndAuthor)</param>
+    /// <param name="title">Filtro por título (opcional)</param>
+    /// <param name="author">Filtro por autor (opcional)</param>
+    /// <param name="sortBy">Campo para ordenação: title, author, edition (padrão: title)</param>
+    /// <param name="sortOrder">Ordem de ordenação: asc, desc (padrão: asc)</param>
     /// <param name="handler">Handler da query</param>
     /// <param name="cancellationToken">Token de cancelamento</param>
-    /// <returns>Lista de livros ativos ordenados</returns>
+    /// <returns>Lista de livros ativos filtrados e ordenados</returns>
     /// <response code="200">Lista de livros retornada com sucesso</response>
     [HttpGet]
     [SwaggerOperation(
         Summary = "Lista todos os livros",
-        Description = "Retorna uma lista com todos os livros ativos no catálogo, ordenados de acordo com a configuração especificada",
+        Description = "Retorna uma lista com todos os livros ativos no catálogo, com opções de filtragem por título e autor, e ordenação personalizável",
         OperationId = "GetAllBooks",
         Tags = new[] { "Books" }
     )]
     [ProducesResponseType(typeof(IEnumerable<BookResponse>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAll(
-        [FromQuery] string? configurationName,
+        [FromQuery] string? title,
+        [FromQuery] string? author,
+        [FromQuery] string? sortBy,
+        [FromQuery] string? sortOrder,
         IQueryHandler<GetAllBooksQuery, IEnumerable<BookResponse>> handler,
         CancellationToken cancellationToken)
     {
-        var query = new GetAllBooksQuery(configurationName);
+        var query = new GetAllBooksQuery(title, author, sortBy, sortOrder);
 
         Result<IEnumerable<BookResponse>> result = await handler.HandleAsync(query, cancellationToken);
 

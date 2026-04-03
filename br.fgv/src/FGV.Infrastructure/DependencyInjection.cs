@@ -1,5 +1,4 @@
 using FGV.Domain.Books;
-using FGV.Domain.Sorting;
 using FGV.Infrastructure.Repositories;
 using FGV.SharedKernel;
 using Microsoft.EntityFrameworkCore;
